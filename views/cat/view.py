@@ -1,4 +1,5 @@
 from flask import Blueprint
+from . import crud
 
 cat_app = Blueprint(
     "cat_app",
@@ -7,6 +8,8 @@ cat_app = Blueprint(
 )
 
 
-@cat_app.route("/")
-def get_cats():
-    return {"cats": "here"}
+@cat_app.route("/phrases", methods=["GET"])
+def get_all_phrases():
+    return crud.get_list_of_phrases()
+
+    
