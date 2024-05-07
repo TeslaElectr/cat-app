@@ -1,5 +1,9 @@
 from flask import Blueprint
+from flask import request
 from . import crud
+
+from models import Phrase
+from cat_api import get_random_cats_fact
 
 cat_app = Blueprint(
     "cat_app",
@@ -8,8 +12,23 @@ cat_app = Blueprint(
 )
 
 
-@cat_app.route("/phrases", methods=["GET"])
-def get_all_phrases():
+@cat_app.route("/phrases/", methods=["GET"])
+def get_all_phrases() -> list[Phrase]:
     return crud.get_list_of_phrases()
+
+    
+    
+@cat_app.route("/phrase/<int:phrase_id>/")
+def get_phrase_by_id(phrase_id: int) -> Phrase:
+    return crud.get_phrase_by_id(phrase_id=phrase_id)
+
+    
+    
+@cat_app.route("/create-phrase/", methods=["POST"])
+def create_phrase_fact():
+    crud.create_phrase(
+        phras=get_random_cats_fact()
+        )
+
 
     
