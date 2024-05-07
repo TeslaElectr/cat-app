@@ -29,7 +29,7 @@ def get_phrase_by_id(phrase_id: int) -> Phrase:
 @cat_app.route("/create-phrase/")
 def create_phrase_fact():
     fact = get_random_cats_fact()
-    return "<h1> Phrase: - {fact} </h1>"
+    return f"<h1> Phrase: - {fact} </h1>"
 
     # new_frase = crud.create_phrase(
     #     phras=fact,
