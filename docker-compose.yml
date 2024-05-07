@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  cat_db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: user 
+      # PG_DATA: /var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
