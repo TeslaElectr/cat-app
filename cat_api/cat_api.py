@@ -1,12 +1,12 @@
 import requests
-import cat_api_config
 
 
+from .cat_api_config import CAT_API_URL
 
 
-def get_random_cats_fact(url: str) -> str:
+def get_random_cats_fact() -> str:
     responce = requests.get(
-        url= cat_api_config.CAT_API_URL
+        url=CAT_API_URL
         )
 
     return responce.json()['fact']
