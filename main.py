@@ -6,15 +6,16 @@ from models import db
 
 from flask_migrate import Migrate
 
+import config
 
 app = Flask(__name__)
 
 app.register_blueprint(root_app)
 app.register_blueprint(cat_app)
 
-app.config(
-    SQLALCHEMY_DATABASE_URI="",
-    SECRET_KEY="",
+app.config.update(
+    SQLALCHEMY_DATABASE_URI=config.DB_URL,
+    SECRET_KEY=config.SECRET_KEY,
 )
 
 db.init_app(app=app)
