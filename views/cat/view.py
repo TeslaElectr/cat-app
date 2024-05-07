@@ -3,7 +3,7 @@ from flask import request
 from . import crud
 
 from models import Phrase
-from cat_api import get_random_cats_fact
+
 
 cat_app = Blueprint(
     "cat_app",
@@ -24,13 +24,15 @@ def get_phrase_by_id(phrase_id: int) -> Phrase:
 
     
     
-@cat_app.route("/create-phrase/", methods=["GET"])
+@cat_app.route("/create-phrase/")
 def create_phrase_fact():
-    fact = get_random_cats_fact()
-    new_frase = crud.create_phrase(
-        phras=fact,
-        )
-    return crud.get_phrase_by_id(phrase_id=new_frase.id)
+    # fact = get_random_cats_fact()
+    return "<h1> Phrase: - "
+
+    # new_frase = crud.create_phrase(
+    #     phras=fact,
+    #     )
+    # return crud.get_phrase_by_id(phrase_id=new_frase.id)
 
 
     
