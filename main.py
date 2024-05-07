@@ -1,10 +1,13 @@
+from flask_migrate import Migrate
 from flask import Flask
 
 from views import root_app
 from views import cat_app
-from models import db
 
-from flask_migrate import Migrate
+
+from models import Cat
+from models import Phrase
+from models import db
 
 import config
 
