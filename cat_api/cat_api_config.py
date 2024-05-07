@@ -1,1 +1,1 @@
-CAT_API_URL = "https://catfact.ninja/fact"
+CAT_API_URL  = "https://catfact.ninja/fact"
