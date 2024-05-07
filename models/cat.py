@@ -1,8 +1,9 @@
 from sqlalchemy import Column
 from sqlalchemy import String
 
-from .database import db
+from sqlalchemy.orm import relationship
 
+from .database import db
 
 
 class Cat(db.Model):
@@ -10,5 +11,10 @@ class Cat(db.Model):
         String,
         nullable=False,
         unique=True
+    )
+
+    phrases = relationship(
+        "Phrase",
+        back_populates="cat",
     )
     
