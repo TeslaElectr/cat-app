@@ -18,17 +18,19 @@ def get_all_phrases() -> list[Phrase]:
 
     
     
-@cat_app.route("/phrase/<int:phrase_id>/")
+@cat_app.route("/phrase/<int:phrase_id>/", methods=["GET"])
 def get_phrase_by_id(phrase_id: int) -> Phrase:
     return crud.get_phrase_by_id(phrase_id=phrase_id)
 
     
     
-@cat_app.route("/create-phrase/", methods=["POST"])
+@cat_app.route("/create-phrase/", methods=["GET"])
 def create_phrase_fact():
-    crud.create_phrase(
-        phras=get_random_cats_fact()
+    fact = get_random_cats_fact()
+    new_frase = crud.create_phrase(
+        phras=fact,
         )
+    return crud.get_phrase_by_id(phrase_id=new_frase.id)
 
 
     
