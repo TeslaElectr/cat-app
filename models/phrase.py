@@ -4,7 +4,7 @@ from sqlalchemy import Integer
 from sqlalchemy.schema import ForeignKey
 from sqlalchemy.orm import relationship
 
-from database import db
+from .database import db
 
 
 class Phrase(db.Model):
@@ -16,7 +16,7 @@ class Phrase(db.Model):
 
     cat_id = Column(
         Integer,
-        ForeignKey("cats.id"),
+        ForeignKey("cat.id"),
         nullable=False,
         unique=False,
     )
