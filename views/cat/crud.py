@@ -1,4 +1,3 @@
-
 from models import db
 from models import Phrase
 from models import Cat
@@ -22,6 +21,8 @@ def create_phrase(phras: str) -> Phrase:
     db.session.add(phrase)
     db.session.commit()
     return phrase
+
+
     
     
     
