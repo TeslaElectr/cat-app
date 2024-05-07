@@ -1,9 +1,10 @@
 version: '3'
 
 services:
-  cat_db:
+  catdb:
     image: postgres:16
     environment:
+      POSTGRES_DB: catdb
       POSTGRES_PASSWORD: password
       POSTGRES_USER: user 
       # PG_DATA: /var/lib/postgresql/data
