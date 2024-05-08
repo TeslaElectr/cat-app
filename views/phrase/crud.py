@@ -1,5 +1,4 @@
 from models import db
-
 from models import Phrase
 
 def get_list_of_phrases() -> list[Phrase]:

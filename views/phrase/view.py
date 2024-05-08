@@ -15,9 +15,12 @@ ph_app = Blueprint(
     url_prefix="/facts",
 )
 
-@ph_app.route("/")
+@ph_app.route(
+    "/",
+    endpoint='facts_page'
+    )
 def ph_hello_page():
-    return "<h1> ph_app_page </h1>"
+    return render_template('phrases/home.html')
 
 
 @ph_app.route(
@@ -33,20 +36,22 @@ def get_all_phrases() -> list[Phrase]:
     )
     
     
-@ph_app.route("/<int:phrase_id>/", methods=["GET"])
-def get_phrase_by_id(phrase_id: int) -> Phrase:
-    return crud.get_phrase_by_id(phrase_id=phrase_id)
+@ph_app.route("/<int:phrase_id>/")
+def get_phrase_by_id(phrase_id: int) -> Phrase.str_phrase:
+    fact = crud.get_phrase_by_id(phrase_id=phrase_id)
+    return "<h1> fact </h1>"
     
     
 @ph_app.route("/create/")
 def create_phrase_fact():
-    rnd_id = 1
+    rnd_id = 1  # ---------------------------------------- the temporary solution
     get_random_cat = cat_crud.get_cat_by_id(cat_id=rnd_id)
     fact = get_random_cats_fact()
-    new_frase = crud.create_phrase(
+    crud.create_phrase(
         phras=fact,
         cat_id=get_random_cat.id,
         )
+
     return f"<h1> {fact} </h1>"
 
 
