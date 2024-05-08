@@ -5,6 +5,7 @@ from . import crud
 from cat_api import get_random_cats_fact
 
 from models import Phrase
+from views.cat import crud as cat_crud
 
 
 ph_app = Blueprint(
@@ -20,7 +21,9 @@ def ph_hello_page():
 
 @ph_app.route("/phrases/", methods=["GET"])
 def get_all_phrases() -> list[Phrase]:
-    return crud.get_list_of_phrases()
+    phrases = crud.get_list_of_phrases()
+    return [str(phrase.str_phrase) for phrase in phrases]
+    
 
     
     
@@ -32,13 +35,14 @@ def get_phrase_by_id(phrase_id: int) -> Phrase:
     
 @ph_app.route("/create/")
 def create_phrase_fact():
+    rnd_id = 1
+    get_random_cat = cat_crud.get_cat_by_id(cat_id=rnd_id)
     fact = get_random_cats_fact()
-    return f"<h1> Phrase: - {fact} </h1>"
-
-    # new_frase = crud.create_phrase(
-    #     phras=fact,
-    #     )
-    # return crud.get_phrase_by_id(phrase_id=new_frase.id)
+    new_frase = crud.create_phrase(
+        phras=fact,
+        cat_id=get_random_cat.id,
+        )
+    return f"<h1> {fact} </h1>"
 
 
     

@@ -13,9 +13,10 @@ def get_phrase_by_id(phrase_id: int) -> Phrase:
     )
 
     
-def create_phrase(phras: str) -> Phrase:
+def create_phrase(phras: str, cat_id: int) -> Phrase:
     phrase = Phrase(
-        str_phrase=phras
+        str_phrase=phras,
+        cat_id=cat_id,
     )
     db.session.add(phrase)
     db.session.commit()
