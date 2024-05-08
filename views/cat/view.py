@@ -3,7 +3,7 @@ from flask import request
 from . import crud
 
 from models import Cat
-from cat_user_api import get_name_cat
+from other_api import get_name_cat
 
 
 cat_app = Blueprint(

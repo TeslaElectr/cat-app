@@ -3,7 +3,7 @@ from flask import render_template
 
 from . import crud
 
-from cat_api import get_random_cats_fact
+from other_api import get_random_cats_fact
 
 from models import Phrase
 from views.cat import crud as cat_crud
