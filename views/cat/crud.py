@@ -8,6 +8,7 @@ def create_cat_user(cat_name: str):
 
     db.session.add(cat)
     db.session.commit()
+    return cat
 
     
 def get_cat_by_id(cat_id: int):
