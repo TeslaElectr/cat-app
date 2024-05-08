@@ -3,7 +3,7 @@ from flask import Flask
 
 from views import root_app
 from views import ph_app
-# from views import cat_app
+from views import cat_app
 
 
 from models import Cat
@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 app.register_blueprint(root_app)
 app.register_blueprint(ph_app)
-# app.register_blueprint(cat_app)
+app.register_blueprint(cat_app)
 
 app.config.update(
     SQLALCHEMY_DATABASE_URI=config.DB_URL,
