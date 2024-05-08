@@ -12,35 +12,30 @@ from views.cat import crud as cat_crud
 ph_app = Blueprint(
     "ph_app",
     __name__,
-    url_prefix="/phrase",
+    url_prefix="/facts",
 )
 
-@ph_app.route("/", methods=["GET"])
+@ph_app.route("/")
 def ph_hello_page():
     return "<h1> ph_app_page </h1>"
 
 
 @ph_app.route(
-    "/phrases/",
+    "/list/",
     endpoint="facts",
 )
 def get_all_phrases() -> list[Phrase]:
     phrases = crud.get_list_of_phrases()
     # return [str(phrase.str_phrase) for phrase in phrases]
     return render_template(
-        'list_phrases.html',
-        phrases,
+        'phrases/list_phrases.html',
+        phrases=phrases,
     )
-
-
-    
-
     
     
 @ph_app.route("/<int:phrase_id>/", methods=["GET"])
 def get_phrase_by_id(phrase_id: int) -> Phrase:
     return crud.get_phrase_by_id(phrase_id=phrase_id)
-
     
     
 @ph_app.route("/create/")
