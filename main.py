@@ -6,8 +6,6 @@ from views import ph_app
 from views import cat_app
 
 
-from models import Cat
-from models import Phrase
 from models import db
 
 import config
