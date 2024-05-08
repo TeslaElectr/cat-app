@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    List cats
+{% endblock %}
+
+
+{% block main %}
+
+<ul>
+    {% for cat in cats %}
+    <li>
+        {{cat.name}}
+    </li>
+    {% endfor %}
+</ul>
+
+<div>
+    <a href="{{url_for('cat_app.create')}}"> Create new random cat </a>
+</div>
+
+{% endblock %}

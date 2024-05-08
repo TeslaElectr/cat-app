@@ -15,7 +15,8 @@
     <h1> It is cat-facts page </h1>
     <ul>
         {% for fact in phrases %}
-        <li> {{fact.str_phrase}}</li>
+        <li> {{fact}}){{fact.str_phrase}}</li>
+        <br>
         {% endfor %}
     </ul>
 {% endblock %}
