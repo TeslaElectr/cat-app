@@ -1,4 +1,5 @@
 from flask import Blueprint
+from flask import render_template
 
 from . import crud
 
@@ -19,10 +20,19 @@ def ph_hello_page():
     return "<h1> ph_app_page </h1>"
 
 
-@ph_app.route("/phrases/", methods=["GET"])
+@ph_app.route(
+    "/phrases/",
+    endpoint="facts",
+)
 def get_all_phrases() -> list[Phrase]:
     phrases = crud.get_list_of_phrases()
-    return [str(phrase.str_phrase) for phrase in phrases]
+    # return [str(phrase.str_phrase) for phrase in phrases]
+    return render_template(
+        'list_phrases.html',
+        phrases,
+    )
+
+
     
 
     
