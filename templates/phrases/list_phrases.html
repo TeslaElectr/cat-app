@@ -3,13 +3,19 @@
 
 
 {% block title %}
-    ...
+    <h1>
+        List of Facts!!!
+    </h1>
 {% endblock %}
 
 
 
 {% block main %}
-    ...
+    <ul>
+        {% for fact in phrases %}
+        <li> {{fact.str_phrase}}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}
 
 
