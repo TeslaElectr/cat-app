@@ -36,8 +36,10 @@ def create_cat():
 @cat_app.route("/<int:cat_id>/", endpoint="detail")
 def get_cat_by_id(cat_id: int):
     cat = crud.get_cat_by_id(cat_id)
+    facts = crud.get_facts_of_cat(cat=cat)
 
     return render_template(
         "cats/detail.html",
         cat=cat,
+        facts=facts,
     )

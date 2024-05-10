@@ -1,5 +1,8 @@
+from typing import Sequence
 from models import db
 from models import Cat
+from models import Phrase
+from sqlalchemy import Result, select
 
 
 
@@ -24,7 +27,13 @@ def get_all_cats():
     
     
     
-    
-    
+def get_facts_of_cat(cat: Cat) -> Sequence[Phrase]:
+    stmt = (
+        select(Phrase)
+        .where(Phrase.cat_id == cat.id)
+        .order_by(Phrase.id)
+    )
 
-    
+    result: Result = db.session.execute(stmt)
+    facts = result.scalars().all()
+    return facts

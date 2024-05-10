@@ -20,7 +20,7 @@ ph_app = Blueprint(
     endpoint='facts_page'
     )
 def ph_hello_page():
-    return render_template('phrases/home.html')
+    return render_template('facts/home.html')
 
 
 @ph_app.route(
@@ -31,14 +31,14 @@ def get_all_phrases() -> list[Phrase]:
     phrases = crud.get_list_of_phrases()
     # return [str(phrase.str_phrase) for phrase in phrases]
     return render_template(
-        'phrases/list_phrases.html',
+        'facts/list_phrases.html',
         phrases=phrases,
     )
     
     
-@ph_app.route("/<int:phrase_id>/")
-def get_phrase_by_id(phrase_id: int) -> Phrase.str_phrase:
-    fact = crud.get_phrase_by_id(phrase_id=phrase_id)
+@ph_app.route("/<int:fact_id>/")
+def get_phrase_by_id(fact_id: int) -> Phrase.str_phrase:
+    fact = crud.get_phrase_by_id(phrase_id=fact_id)
     return "<h1> fact </h1>"
     
     
