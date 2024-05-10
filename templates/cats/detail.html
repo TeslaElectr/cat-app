@@ -15,4 +15,16 @@
     <a href="{{url_for('cat_app.list')}}"> Back to list of cat users </a>
 </div>
 
+<br>
+<br>
+
+{% for fact in facts %}
+<ul>
+    <li>
+        {{fact.str_phrase}}
+    </li>
+</ul>
+{% endfor %}
+
+
 {% endblock %}
