@@ -38,6 +38,6 @@ def get_cat_by_id(cat_id: int):
     cat = crud.get_cat_by_id(cat_id)
 
     return render_template(
-        "cats/details.html",
+        "cats/detail.html",
         cat=cat,
     )
