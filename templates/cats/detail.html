@@ -18,6 +18,10 @@
 <br>
 <br>
 
+<div>
+    <a href="{{url_for('ph_app.create', cat_id=cat.id)}}"> Add new fact for # {{cat.name}}</a>
+</div>
+
 {% for fact in facts %}
 <ul>
     <li>

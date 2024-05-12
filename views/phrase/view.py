@@ -1,5 +1,7 @@
 from flask import Blueprint
 from flask import render_template
+from flask import redirect
+from flask import url_for
 
 from . import crud
 
@@ -20,7 +22,7 @@ ph_app = Blueprint(
     endpoint='facts_page'
     )
 def ph_hello_page():
-    return render_template('facts/home.html')
+    return render_template('phrases/home.html')
 
 
 @ph_app.route(
@@ -31,7 +33,7 @@ def get_all_phrases() -> list[Phrase]:
     phrases = crud.get_list_of_phrases()
     # return [str(phrase.str_phrase) for phrase in phrases]
     return render_template(
-        'facts/list_phrases.html',
+        'phrases/list_phrases.html',
         phrases=phrases,
     )
     
@@ -42,17 +44,16 @@ def get_phrase_by_id(fact_id: int) -> Phrase.str_phrase:
     return "<h1> fact </h1>"
     
     
-@ph_app.route("/create/")
-def create_phrase_fact():
-    rnd_id = 1  # ---------------------------------------- the temporary solution
-    get_random_cat = cat_crud.get_cat_by_id(cat_id=rnd_id)
-    fact = get_random_cats_fact()
+@ph_app.route("/create/<int:cat_id>/", endpoint="create")
+def create_phrase_fact(cat_id: int):
     crud.create_phrase(
-        phras=fact,
-        cat_id=get_random_cat.id,
+        phras=get_random_cats_fact(),
+        cat_id=cat_id
         )
 
-    return f"<h1> {fact} </h1>"
+    url = url_for('cat_app.detail',cat_id=cat_id)
+
+    return redirect(url)
 
 
     
