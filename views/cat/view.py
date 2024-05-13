@@ -3,9 +3,11 @@ from flask import request
 from flask import url_for
 from flask import redirect
 from flask import render_template
+
 from . import crud
 
 from models import Cat
+
 from other_api import get_name_cat
 
 
@@ -34,12 +36,16 @@ def create_cat():
     
     
 @cat_app.route("/<int:cat_id>/", endpoint="detail")
-def get_cat_by_id(cat_id: int):
-    cat = crud.get_cat_by_id(cat_id)
-    facts = crud.get_facts_of_cat(cat=cat)
+def get_cat_and_his_facts_by_id(cat_id: int):
+
+    cat = crud.get_cat_and_his_facts_by_id(cat_id=cat_id)
+    facts = cat.phrases
 
     return render_template(
         "cats/detail.html",
         cat=cat,
         facts=facts,
     )
+
+    
+    

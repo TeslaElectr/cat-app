@@ -1,13 +1,16 @@
 from flask import Blueprint
 from flask import render_template
 from flask import redirect
+from flask import request
 from flask import url_for
+
 
 from . import crud
 
 from other_api import get_random_cats_fact
 
 from models import Phrase
+from models import Cat
 from views.cat import crud as cat_crud
 
 
@@ -46,6 +49,7 @@ def get_phrase_by_id(fact_id: int) -> Phrase.str_phrase:
     
 @ph_app.route("/create/<int:cat_id>/", endpoint="create")
 def create_phrase_fact(cat_id: int):
+
     crud.create_phrase(
         phras=get_random_cats_fact(),
         cat_id=cat_id
