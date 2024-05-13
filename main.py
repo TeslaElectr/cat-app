@@ -30,3 +30,4 @@ migrate = Migrate(app=app, db=db)
 
 
 
+

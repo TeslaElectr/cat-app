@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% block title %}
     <h1>{{cat.name}}</h1>
 {% endblock %}
@@ -7,9 +8,11 @@
 
 {% block main %}
 
+
 <h1>
     Here live #{{cat.name}}
 </h1>
+
 
 <div>
     <a href="{{url_for('cat_app.list')}}"> Back to list of cat users </a>
@@ -22,10 +25,10 @@
     <a href="{{url_for('ph_app.create', cat_id=cat.id)}}"> Add new fact for # {{cat.name}}</a>
 </div>
 
-{% for fact in facts %}
+{% for facts in facts %}
 <ul>
     <li>
-        {{fact.str_phrase}}
+        {{facts.str_phrase}}
     </li>
 </ul>
 {% endfor %}
