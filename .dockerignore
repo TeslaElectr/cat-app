@@ -1,0 +1,6 @@
+*/__pycache__
+__pycache__/
+./.venv/
+./.vscode
+./docker-build/Dockerfile
+./docker-build/Dockerfile-local

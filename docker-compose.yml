@@ -6,17 +6,22 @@ services:
     build:
       dockerfile: ./docker_build/Dockerfile
       context: ./
-    entrypoint: 
-      - bash
-      - "prestart.sh"
-    command: 
-      - flask
-      - run 
-      - "--host=0.0.0.0"
+    # entrypoint: 
+    #   - bash
+    #   - "prestart.sh"
+    # command: 
+    #   - flask
+    #   - run 
+    #   - "--host=0.0.0.0"
     environment:
       SQLALCHEMY_DATABASE_URI: postgresql+psycopg://user:password@catdb:5432/catdb
     ports:
-      - "5000:5000"
+      - "5000:80"
+    volumes:
+      - ./templates:/templates
+    depends_on:
+      catdb:
+        condition: service_healthy
 
 
   catdb:
@@ -25,7 +30,20 @@ services:
       POSTGRES_DB: catdb
       POSTGRES_PASSWORD: password
       POSTGRES_USER: user 
-      # PG_DATA: /var/lib/postgresql/data
+      PG_DATA: /var/lib/postgresql/data
     # ports:
     #   - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      # start_period: 30s
+
+volumes:
+  db_data:
+
 
