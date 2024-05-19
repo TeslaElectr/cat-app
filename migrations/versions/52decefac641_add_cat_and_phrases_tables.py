@@ -1,8 +1,8 @@
-"""add cat table
+"""add cat and phrases tables
 
-Revision ID: 1f4fff58fbb0
+Revision ID: 52decefac641
 Revises: 
-Create Date: 2024-05-19 19:50:51.638925
+Create Date: 2024-05-19 19:59:28.301683
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '1f4fff58fbb0'
+revision = '52decefac641'
 down_revision = None
 branch_labels = None
 depends_on = None
