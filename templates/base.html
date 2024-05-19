@@ -4,14 +4,29 @@
     <meta charset="UTF-8">
     <title> 
         {% block title %}
-        Base html
         {% endblock %}
     </title>
 </head>
 <body>
     <main>
         {% block main %}
-        Base Body
+        <h1>
+            This is api can make new cat-user 
+            <br>
+            and generates facts from him
+        </h1>
+
+        <div>
+            <ul>
+                <a href="{{url_for('cat_app.list')}}">All Cats here</a>
+            </ul>
+        </div>
+        <br>
+        <div>
+            <ul>
+                <a href="{{url_for('ph_app.facts')}}">All exists facts here</a>
+            </ul>
+        </div>
         {% endblock %}
 
     </main>
