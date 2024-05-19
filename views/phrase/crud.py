@@ -1,7 +1,7 @@
 from models import db
 from models import Phrase
 
-def get_list_of_phrases() -> list[Phrase]:
+def get_all_phrases() -> list[Phrase]:
     return Phrase.query.all()
 
     

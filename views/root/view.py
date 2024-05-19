@@ -1,4 +1,5 @@
 from flask import Blueprint
+from flask import render_template
 
 
 root_app = Blueprint(
@@ -10,6 +11,6 @@ root_app = Blueprint(
 
 @root_app.route("/")
 def hello_world():
-    return "<h1> Hellow World! </h1>"
+    return render_template("base.html")
     
     
