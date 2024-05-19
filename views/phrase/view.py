@@ -33,7 +33,7 @@ def ph_hello_page():
     endpoint="facts",
 )
 def get_all_phrases() -> list[Phrase]:
-    phrases = crud.get_list_of_phrases()
+    phrases = crud.get_all_phrases()
     # return [str(phrase.str_phrase) for phrase in phrases]
     return render_template(
         'phrases/list_phrases.html',
