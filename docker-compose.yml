@@ -1,6 +1,24 @@
 version: '3'
 
 services:
+  
+  catapp:
+    build:
+      dockerfile: ./docker_build/Dockerfile
+      context: ./
+    entrypoint: 
+      - bash
+      - "prestart.sh"
+    command: 
+      - flask
+      - run 
+      - "--host=0.0.0.0"
+    environment:
+      SQLALCHEMY_DATABASE_URI: postgresql+psycopg://user:password@catdb:5432/catdb
+    ports:
+      - "5000:5000"
+
+
   catdb:
     image: postgres:16
     environment:
@@ -8,6 +26,6 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_USER: user 
       # PG_DATA: /var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+    # ports:
+    #   - "5432:5432"
 
